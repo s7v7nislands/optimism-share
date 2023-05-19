@@ -1,0 +1,35 @@
+description: |md
+  # op-node
+| {near: top-center}
+
+op-node: {
+  link: "https://vscode.dev/github/ethereum-optimism/optimism/blob/op-batcher/v1.0.7/op-node/node/node.go#L77-L78"
+  driver: {
+    pipeline: {
+      engine quene
+    }
+    sequencer -> pipeline
+    pipeline -> l2 engine client
+    l2 engine client -> _._.op-geth
+  }
+  driver -> l1 source.header sub: get l1 headers
+
+  l1 source: {
+    fetcher
+    header sub
+  }
+
+  p2p: {
+    p2pBlockSignerAddr
+  }
+  runtime config
+  rpcServer
+  rpcSync
+  metrics
+  tracer
+
+  p2p.p2pBlockSignerAddr -> runtime config: get p2pBlockSignerAddr
+  runtime config -> l1 source.fetcher
+}
+
+op-geth

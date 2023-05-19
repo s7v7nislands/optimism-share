@@ -1,0 +1,24 @@
+driver loop: {
+  link: "https://vscode.dev/github/ethereum-optimism/optimism/blob/op-batcher/v1.0.7/op-node/rollup/driver/state.go#L144"
+  "produce block": {
+    sequencerCh
+    stepReqCh
+  }
+  "": {
+    unsafeL2Payloads
+    altSyncTicker
+  }
+  "header changes": {
+    l1HeadSig
+    l1SafeSig
+    l1FinalizedSig
+  }
+  "admin": {
+    stateReq
+    forceReset
+    startSequencer
+    stopSequencer
+  }
+}
+
+driver loop -> driver loop: select channels to reaction different events
